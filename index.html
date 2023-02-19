@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
+  <link rel="icon" href="favicon.ico">
+  <title>两倍老婆：无限 - waifu2x: unlimited</title>
+  <script src="./jquery.min.js"></script>
+  <script src="./jquery.cookie.min.js"></script>
+  <script src="./ort.min.js"></script>
+  <script src="./script.js" charset="utf-8"></script>
+  <link href="./style.css" rel="stylesheet" type="text/css">
+  <script charset="utf-8" src="chrome-extension://pngicgippofneelinabebobnkpmdiphn/js/btype.js"></script>
+  <script charset="utf-8" src="chrome-extension://pngicgippofneelinabebobnkpmdiphn/js/chrome.js"></script>
+</head>
+
+<body>
+  <h1>两倍老婆：无限 - waifu2x: unlimited</h1>
+  <div style="font-size: 0.8em; text-align: center; margin: 0 auto;">
+    运行于浏览器的 waifu2x 实验版
+  </div>
+  <div id="main-panel">
+    <div id="src-box">
+      <canvas id="src" width="128" height="128"></canvas>
+    </div>
+    <form id="form-box">
+      <table>
+        <tbody>
+          <tr>
+            <td>文件</td>
+            <td>
+              <input type="file" id="file" name="file" accept="image/*">
+            </td>
+          </tr>
+          <tr>
+            <td>模型</td>
+            <td>
+              <select name="model">
+                <option value="swin_unet.art" selected="">swin_unet / art (202302)</option>
+                <option value="cunet.art">cunet / art (201811)</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>JPE降噪</td>
+            <td>
+              <select name="noise_level">
+                <option value="-1">(-) 无降噪</option>
+                <option value="0" selected="">(0) 低降噪</option>
+                <option value="1">(1) 中降噪</option>
+                <option value="2">(2) 高降噪</option>
+                <option value="3">(3) 最高降噪</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>放大倍数</td>
+            <td>
+              <select name="scale">
+                <option value="1">1x</option>
+                <option value="2" selected="">2x</option>
+                <option value="4">4x</option>
+              </select>
+              <span id="scale-comment" style="display: none;">no 4x support</span>
+            </td>
+          </tr>
+          <tr>
+            <td>区块大小</td>
+            <td>
+              <select name="tile_size">
+                <option value="64" selected="">64</option>
+                <option value="256">256</option>
+              </select>
+              <label>
+                <input type="checkbox" name="tile_random">
+                随机区块
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>测试集数据扩增(TTA)</td>
+            <td>
+              <select name="tta">
+                <option value="0" selected="">不扩增</option>
+                <option value="2">2次扩增预测</option>
+                <option value="4">4次扩增预测</option>
+              </select>
+              集成学习
+            </td>
+          </tr>
+          <tr>
+            <td>透明通道</td>
+            <td>
+              <select name="alpha">
+                <option value="1">自动</option>
+                <option value="0" selected="">关闭</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <div id="button-box">
+                <input type="button" id="start" value="开始">
+                <input type="button" id="stop" value="停止">
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    <div id="message">
+      ( ・∀・)
+    </div>
+    <div id="dest-box">
+      <canvas id="dest"></canvas>
+    </div>
+  </div>
+  <div id="footer">
+    <div>
+      <a href="https://yojigen.tech">四次元科技</a>
+    </div>
+    Powered by <a href="https://github.com/nagadomi/nunif">nunif/waifu2x</a>, <a
+      href="https://waifu2x.udp.jp/">waifu2x.udp.jp</a>
+  </div>
+</body>
+
+</html>
